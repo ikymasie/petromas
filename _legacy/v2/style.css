@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap');
 /* ============================================================
    PETROMAS — Premium Industrial Website Stylesheet
    Brand Colors: Deep Petrol Navy #2D2A77 | Energy Lime #82C341
@@ -5,15 +6,15 @@
 
 /* ── CSS Custom Properties ──────────────────────────────── */
 :root {
-  --navy:       #2D2A77;
-  --navy-dark:  #1e1c55;
-  --navy-light: #3d3a8e;
-  --lime:       #82C341;
-  --lime-dark:  #6aA035;
-  --lime-light: #9fd458;
-  --bg:         #F8F9FA;
-  --charcoal:   #333333;
-  --white:      #ffffff;
+  --navy:       #00E5FF;
+  --navy-dark:  #020617;
+  --navy-light: #0B1A30;
+  --lime:       #B026FF;
+  --lime-dark:  #8b5cf6;
+  --lime-light: #c4b5fd;
+  --bg:         #030712;
+  --charcoal:   #E2E8F0;
+  --white:      rgba(255, 255, 255, 0.03);
   --grey-100:   #f1f3f5;
   --grey-200:   #e9ecef;
   --grey-400:   #adb5bd;
@@ -25,7 +26,7 @@
   --radius-md:  16px;
   --radius-lg:  24px;
   --transition: 0.3s cubic-bezier(.4,0,.2,1);
-  --font-head:  'Montserrat', sans-serif;
+  --font-head:  'Orbitron', sans-serif;
   --font-body:  'Inter', sans-serif;
   --max-w:      1240px;
 }
@@ -43,7 +44,7 @@ body {
   font-family: var(--font-body);
   color: var(--charcoal);
   background: var(--bg);
-  line-height: 1.6;
+  line-height: 2.0; letter-spacing: 0.03em; letter-spacing: 0.03em;
   overflow-x: hidden;
 }
 
@@ -91,7 +92,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .section-subtitle {
   font-size: 1.05rem;
   color: var(--grey-600);
-  line-height: 1.7;
+  line-height: 1.9; letter-spacing: 0.03em;
 }
 
 .text-lime { color: var(--lime); }
@@ -207,12 +208,17 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   top: 0; left: 0; right: 0;
   z-index: 100;
   padding: 20px 0;
+  background: rgba(3, 7, 18, 0.5); /* Glass base visibility */
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Slight edge */
   transition: background var(--transition), padding var(--transition), box-shadow var(--transition);
 }
 .navbar.scrolled {
-  background: var(--white);
+  background: rgba(3, 7, 18, 0.85);
+  backdrop-filter: blur(20px);
   padding: 14px 0;
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 8px 32px rgba(0, 229, 255, 0.15); /* Neon shadow */
+  border-bottom: 1px solid rgba(0, 229, 255, 0.2);
 }
 .navbar__inner {
   display: flex;
@@ -245,12 +251,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: absolute;
   bottom: 0; left: 0;
   width: 0; height: 2px;
-  background: var(--lime);
+  background: var(--navy); /* Changed from lime to neon cyan */
   transition: width var(--transition);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.6);
 }
 .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-.navbar.scrolled .nav-link { color: var(--navy); }
-.nav-link:hover { color: var(--lime); }
+.navbar.scrolled .nav-link { color: #E2E8F0; }
+.nav-link:hover { color: var(--navy); text-shadow: 0 0 8px rgba(0, 229, 255, 0.4); }
 
 .navbar__cta { margin-left: 16px; }
 
@@ -358,12 +365,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--lime);
-  border: 1px solid rgba(130,195,65,.4);
+  border: 1px solid rgba(176,38,255,.5);
   padding: 6px 16px;
   border-radius: 99px;
   margin-bottom: 24px;
-  backdrop-filter: blur(4px);
-  background: rgba(130,195,65,.08);
+  backdrop-filter: blur(8px);
+  background: rgba(176,38,255,.1);
+  box-shadow: 0 0 15px rgba(176,38,255, 0.2);
 }
 .hero__title {
   font-family: var(--font-head);
@@ -380,7 +388,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero__subtitle {
   font-size: 1.1rem;
   color: rgba(255,255,255,.8);
-  line-height: 1.8;
+  line-height: 2.0; letter-spacing: 0.03em;
   margin-bottom: 40px;
   max-width: 580px;
 }
@@ -529,7 +537,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .about__content { padding-top: 20px; }
-.about__text { color: var(--grey-600); line-height: 1.8; margin-bottom: 20px; }
+.about__text { color: var(--grey-600); line-height: 2.0; letter-spacing: 0.03em; margin-bottom: 20px; }
 
 .about__values { margin-top: 36px; display: flex; flex-direction: column; gap: 20px; }
 .value-item {
@@ -648,14 +656,21 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .service-card__body { padding: 28px; }
 .service-icon {
   width: 48px; height: 48px;
-  background: rgba(130,195,65,.1);
+  background: rgba(0, 229, 255, 0.1);
+  border: 1px solid rgba(0, 229, 255, 0.3);
   border-radius: var(--radius-sm);
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 16px;
-  color: var(--lime);
-  transition: background var(--transition);
+  color: var(--navy);
+  transition: all var(--transition);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0);
 }
-.service-card:hover .service-icon { background: var(--lime); color: var(--white); }
+.service-card:hover .service-icon { 
+    background: rgba(0, 229, 255, 0.2); 
+    border-color: var(--navy);
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+    color: #fff;
+}
 .service-icon svg { width: 22px; height: 22px; }
 
 .service-card__body h3 {
@@ -669,7 +684,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .service-card__body p {
   font-size: 0.9rem;
   color: var(--grey-600);
-  line-height: 1.7;
+  line-height: 1.9; letter-spacing: 0.03em;
   margin-bottom: 20px;
 }
 .service-card__features {
@@ -681,12 +696,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-size: 0.72rem;
   font-weight: 700;
   font-family: var(--font-head);
-  color: var(--lime-dark);
-  background: rgba(130,195,65,.1);
-  border: 1px solid rgba(130,195,65,.25);
+  color: #E2E8F0;
+  background: rgba(176,38,255,.15);
+  border: 1px solid rgba(176,38,255,.4);
   padding: 4px 12px;
   border-radius: 99px;
   letter-spacing: 0.05em;
+  box-shadow: inset 0 0 5px rgba(176,38,255,.2);
 }
 
 /* ── OPERATIONS & MAP ─────────────────────────────────────── */
@@ -728,9 +744,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border-radius: 50%;
   display: inline-block;
 }
-.legend-dot--hq     { background: var(--lime); box-shadow: 0 0 0 3px rgba(130,195,65,.3); }
-.legend-dot--depot  { background: #60a5fa; box-shadow: 0 0 0 3px rgba(96,165,250,.3); }
-.legend-dot--partner{ background: #fbbf24; box-shadow: 0 0 0 3px rgba(251,191,36,.3); }
+.legend-dot--hq     { background: var(--navy); box-shadow: 0 0 8px 3px rgba(0, 229, 255, 0.4); }
+.legend-dot--depot  { background: var(--lime); box-shadow: 0 0 8px 3px rgba(176, 38, 255, 0.4); }
+.legend-dot--partner{ background: #E2E8F0; box-shadow: 0 0 8px 3px rgba(226, 232, 240, 0.3); }
 
 .operations__info {
   display: flex;
@@ -792,15 +808,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .industry-card__icon {
   width: 56px; height: 56px;
-  background: rgba(45,42,119,.06);
+  background: rgba(0, 229, 255, 0.08);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   color: var(--navy);
+  border: 1px solid rgba(0, 229, 255, 0.2);
   transition: all var(--transition);
 }
 .industry-card:hover .industry-card__icon {
-  background: var(--lime);
-  color: var(--white);
+  background: rgba(0, 229, 255, 0.2);
+  border-color: var(--navy);
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+  color: #fff;
 }
 .industry-card__icon svg { width: 22px; height: 22px; }
 .industry-card span {
@@ -862,7 +881,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin-top: 2px;
 }
 .usp-item strong { display: block; font-family: var(--font-head); font-size: 0.95rem; color: var(--navy); margin-bottom: 6px; }
-.usp-item p { font-size: 0.9rem; color: var(--grey-600); line-height: 1.7; }
+.usp-item p { font-size: 0.9rem; color: var(--grey-600); line-height: 1.9; letter-spacing: 0.03em; }
 
 /* ── CONTACT ─────────────────────────────────────────────── */
 .contact {
@@ -937,13 +956,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .form-success {
   display: none;
   padding: 16px;
-  background: rgba(130,195,65,.1);
-  border: 1px solid var(--lime);
+  background: rgba(0, 229, 255, 0.1);
+  border: 1px solid var(--navy);
   border-radius: var(--radius-sm);
-  color: var(--lime-dark);
+  color: var(--navy);
+  text-shadow: 0 0 5px rgba(0, 229, 255, 0.4);
   font-weight: 600;
   text-align: center;
   font-family: var(--font-head);
+  backdrop-filter: blur(8px);
 }
 .form-success.visible { display: block; }
 
@@ -978,7 +999,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .contact-detail__icon svg { width: 20px; height: 20px; }
 .contact-detail strong { display: block; font-family: var(--font-head); font-size: 0.85rem; color: var(--navy); margin-bottom: 4px; }
-.contact-detail p { font-size: 0.9rem; color: var(--grey-600); line-height: 1.6; }
+.contact-detail p { font-size: 0.9rem; color: var(--grey-600); line-height: 2.0; letter-spacing: 0.03em; letter-spacing: 0.03em; }
 .contact-detail a { color: var(--navy); font-weight: 600; }
 .contact-detail a:hover { color: var(--lime); }
 
@@ -998,7 +1019,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   gap: 48px;
 }
 .footer__brand .footer-logo { height: 52px; margin-bottom: 20px; filter: brightness(0) invert(1); }
-.footer__brand p { font-size: 0.9rem; line-height: 1.8; max-width: 300px; }
+.footer__brand p { font-size: 0.9rem; line-height: 2.0; letter-spacing: 0.03em; max-width: 300px; }
 .footer__socials { display: flex; gap: 12px; margin-top: 20px; }
 .social-link {
   width: 40px; height: 40px;
@@ -1064,15 +1085,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .particle {
   position: absolute;
   border-radius: 50%;
-  background: rgba(130,195,65,.5);
+  background: rgba(0, 229, 255, 0.4);
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
   pointer-events: none;
   animation: floatParticle linear infinite;
 }
 @keyframes floatParticle {
   from { transform: translateY(100vh) scale(0); opacity: 0; }
   10%  { opacity: 1; }
-  90%  { opacity: 0.5; }
-  to   { transform: translateY(-100px) scale(1); opacity: 0; }
+  90%  { opacity: 0.8; }
+  to   { transform: translateY(-100px) scale(1.2); opacity: 0; }
 }
 
 /* ── GOOGLE MAP CUSTOM INFO WINDOW ────────────────────────── */
@@ -1134,3 +1156,130 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   html { scroll-behavior: auto; }
 }
+
+/* ── V2 ANTI-GRAVITY OVERRIDES ────────────────────────── */
+body {
+    background: var(--bg);
+    color: #E2E8F0;
+}
+
+/* Typography tweaks */
+h1, h2, h3, h4, .section-title, .hero__title, .stat-number {
+    font-family: var(--font-head) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.1em !important;
+}
+
+/* Override sections with hardcoded whites/bgs */
+.about, .services, .operations, .industries, .why-us, .contact {
+    background: transparent !important;
+}
+
+.about__content, .contact-info-card {
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-lg);
+    padding: 30px;
+}
+
+.section-title { color: #E2E8F0 !important; }
+.text-lime { color: var(--lime) !important; text-shadow: 0 0 10px rgba(176, 38, 255, 0.6); }
+
+/* Glassmorphism for Navigation */
+.navbar, .navbar.scrolled, .mobile-menu {
+    background: rgba(3, 7, 18, 0.7) !important;
+    backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+}
+.navbar.scrolled .nav-link, .nav-link { color: #E2E8F0 !important; }
+.nav-link:hover { color: var(--navy) !important; text-shadow: 0 0 8px rgba(0, 229, 255, 0.6); }
+
+/* Glassmorphism for Cards */
+.service-card, .industry-card, .stat-card, .op-stat, .contact-detail__icon, .value-icon {
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #E2E8F0 !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+}
+.service-card__body h3, .industry-card span, .op-stat strong, .contact-detail strong, .value-item strong {
+    color: #E2E8F0 !important;
+}
+.service-card__body p, .op-stat p, .contact-detail p, .value-item p {
+    color: #94A3B8 !important;
+}
+
+/* Anti-Gravity Hover Lift & Glow */
+.service-card:hover, .industry-card:hover, .op-stat:hover {
+    transform: translateY(-12px) !important;
+    border-color: var(--navy) !important;
+    box-shadow: 0 15px 35px rgba(0, 229, 255, 0.2) !important;
+}
+
+/* Button Glows */
+.btn--primary {
+    background: transparent !important;
+    border: 1px solid var(--navy) !important;
+    color: var(--navy) !important;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2), inset 0 0 10px rgba(0, 229, 255, 0.1);
+}
+.btn--primary:hover {
+    background: var(--navy) !important;
+    color: #030712 !important;
+    box-shadow: 0 0 15px var(--navy), 0 0 30px var(--navy) !important;
+    transform: translateY(-4px) !important;
+    border-color: var(--navy) !important;
+}
+
+.btn--outline {
+    border-color: var(--lime) !important;
+    color: var(--lime) !important;
+}
+.btn--outline:hover {
+    background: var(--lime) !important;
+    color: #030712 !important;
+    box-shadow: 0 0 15px var(--lime), 0 0 30px var(--lime) !important;
+    transform: translateY(-4px) !important;
+}
+
+/* Floating Animations */
+@keyframes floatGentle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.about__img-main img, 
+.about__img-secondary img, 
+.why-us__image img, 
+.service-icon, 
+.industry-card__icon {
+    animation: floatGentle 6s ease-in-out infinite !important;
+}
+
+.service-icon, .industry-card__icon, .op-stat__icon {
+    background: rgba(0, 229, 255, 0.1) !important;
+    color: var(--navy) !important;
+    border: 1px solid var(--navy);
+}
+
+/* Form Elements Glass */
+.form-group input, .form-group select, .form-group textarea {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: #E2E8F0 !important;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--navy) !important;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.3) !important;
+}
+.form-group label { color: #94A3B8 !important; }
+
+/* Keep footers dark */
+.footer {
+    background: #020617 !important;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Fix text colors */
+p { color: #94A3B8 !important; }

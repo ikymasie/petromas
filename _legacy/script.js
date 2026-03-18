@@ -16,7 +16,7 @@
     setTimeout(() => {
       preloader.classList.add('hidden');
       document.body.style.overflow = '';
-    }, 800);
+    }, 2000);
   });
 
   document.body.style.overflow = 'hidden';
