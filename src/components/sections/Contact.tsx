@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -16,10 +17,44 @@ export function Contact() {
     }, 1500);
   };
 
+  const contactDetails = [
+    {
+      icon: MapPin,
+      title: "Registered Office",
+      content: "Plot 64517, Unit 22\nFairground Office Park\nGaborone, Botswana"
+    },
+    {
+      icon: MapPin,
+      title: "Postal Address",
+      content: "P. O. Box 2803\nGaborone, Botswana"
+    },
+    {
+      icon: Phone,
+      title: "Phone & Fax",
+      content: <>Phone: <a href="tel:+2673933612" className="hover:text-[var(--lime)] transition-colors">+267 3933612</a><br/>Fax: +267 3933614<br/>Mobile: <a href="tel:+26771600015" className="hover:text-[var(--lime)] transition-colors">+267 71600015</a></>
+    },
+    {
+      icon: Mail,
+      title: "Email",
+      content: <a href="mailto:admin@petromas.co.bw" className="hover:text-[var(--lime)] transition-colors break-all">admin@petromas.co.bw</a>
+    },
+    {
+      icon: Clock,
+      title: "Operating Hours",
+      content: <>Mon &ndash; Fri: 07:00 &ndash; 18:00<br /><span className="text-[var(--lime)] font-semibold">Emergency: 24/7</span></>
+    }
+  ];
+
   return (
-    <section id="contact" className="py-16 md:py-24 bg-[var(--bg)] transition-colors duration-300">
+    <section id="contact" className="py-16 md:py-24 bg-[var(--bg)] transition-colors duration-300 overflow-hidden">
       <div className="container mx-auto px-6">
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-2xl mx-auto mb-16"
+        >
           <span className="inline-block font-head text-[0.75rem] font-bold tracking-[0.15em] text-[var(--lime)] uppercase mb-3">
             GET IN TOUCH
           </span>
@@ -29,13 +64,20 @@ export function Contact() {
           <p className="text-[1.05rem] text-[var(--grey-600)] leading-loose tracking-wide aerospace-text-body">
             Ready to secure a reliable fuel supply? Fill in the form and our team will respond within 2 business hours.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20">
           
           {/* Form Side */}
-          <div className="bg-[var(--white)] p-8 md:p-10 rounded-2xl shadow-[0_2px_8px_rgba(45,42,119,0.08)] card-bg">
-            <form onSubmit={handleSubmit} className="space-y-6">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="bg-white/40 backdrop-blur-xl border border-white/20 p-8 md:p-10 rounded-2xl shadow-[0_8px_32px_rgba(45,42,119,0.08)] card-bg relative overflow-hidden group"
+          >
+            <div className="absolute -top-24 -left-24 w-48 h-48 bg-[var(--lime)]/10 rounded-full blur-3xl group-hover:bg-[var(--lime)]/20 transition-colors duration-700"></div>
+            <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="block font-head text-[0.85rem] font-bold text-[var(--charcoal)] tracking-wider">Full Name *</label>
@@ -65,7 +107,7 @@ export function Contact() {
                     type="email" 
                     id="email" 
                     required 
-                    placeholder="john@company.co.za"
+                    placeholder="john@company.co.bw"
                     className="w-full px-5 py-3.5 bg-transparent border-2 border-[var(--grey-200)] rounded-lg text-[0.95rem] text-[var(--charcoal)] transition-all duration-300 focus:outline-none focus:border-[var(--navy)] focus:ring-4 focus:ring-[var(--navy)]/10"
                   />
                 </div>
@@ -74,7 +116,7 @@ export function Contact() {
                   <input 
                     type="tel" 
                     id="phone" 
-                    placeholder="+27 11 000 0000"
+                    placeholder="+267 71 000 000"
                     className="w-full px-5 py-3.5 bg-transparent border-2 border-[var(--grey-200)] rounded-lg text-[0.95rem] text-[var(--charcoal)] transition-all duration-300 focus:outline-none focus:border-[var(--navy)] focus:ring-4 focus:ring-[var(--navy)]/10"
                   />
                 </div>
@@ -117,75 +159,53 @@ export function Contact() {
                 {isSubmitting ? "SENDING ENQUIRY..." : "SEND ENQUIRY"}
               </button>
             </form>
-          </div>
+          </motion.div>
 
           {/* Contact Info Side */}
-          <div className="bg-[var(--navy-dark)] text-[#E2E8F0] p-8 md:p-10 rounded-2xl shadow-[0_20px_60px_rgba(45,42,119,0.16)] flex flex-col justify-between relative overflow-hidden">
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="bg-[var(--navy-dark)] text-[#E2E8F0] p-8 md:p-10 rounded-2xl shadow-[0_20px_60px_rgba(45,42,119,0.16)] flex flex-col justify-between relative overflow-hidden"
+          >
             <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--navy)]/20 rounded-full blur-3xl -mr-20 -mt-20"></div>
             
             <div className="relative z-10">
               <h3 className="font-head text-2xl font-bold text-white mb-10">Contact Details</h3>
               
               <div className="space-y-8">
-                <div className="flex items-start gap-4">
-                  <div className="w-11 h-11 shrink-0 bg-[var(--navy)]/50 rounded-lg flex items-center justify-center text-[var(--lime)] border border-[var(--navy-light)]">
-                    <MapPin className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <strong className="block font-head text-lg text-white mb-1">Registered Office</strong>
-                    <p className="text-[0.9rem] text-gray-400 leading-relaxed">Plot 64517, Unit 22<br />Fairground Office Park<br />Gaborone, Botswana</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-11 h-11 shrink-0 bg-[var(--navy)]/50 rounded-lg flex items-center justify-center text-[var(--lime)] border border-[var(--navy-light)]">
-                    <MapPin className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <strong className="block font-head text-lg text-white mb-1">Postal Address</strong>
-                    <p className="text-[0.9rem] text-gray-400 leading-relaxed">P. O. Box 2803<br />Gaborone, Botswana</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-11 h-11 shrink-0 bg-[var(--navy)]/50 rounded-lg flex items-center justify-center text-[var(--lime)] border border-[var(--navy-light)]">
-                    <Phone className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <strong className="block font-head text-lg text-white mb-1">Phone & Fax</strong>
-                    <p className="text-[0.9rem] text-gray-400 leading-relaxed">
-                      Phone: <a href="tel:+26771600015" className="hover:text-[var(--lime)] transition-colors">+267 71600015</a><br/>
-                      Fax: +267 393-0098
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-11 h-11 shrink-0 bg-[var(--navy)]/50 rounded-lg flex items-center justify-center text-[var(--lime)] border border-[var(--navy-light)]">
-                    <Mail className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <strong className="block font-head text-lg text-white mb-1">Email</strong>
-                    <p className="text-[0.9rem] text-gray-400 leading-relaxed">
-                      <a href="mailto:admin@petromas.co.bw" className="hover:text-[var(--lime)] transition-colors break-all">admin@petromas.co.bw</a>
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-11 h-11 shrink-0 bg-[var(--navy)]/50 rounded-lg flex items-center justify-center text-[var(--lime)] border border-[var(--navy-light)]">
-                    <Clock className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <strong className="block font-head text-lg text-white mb-1">Operating Hours</strong>
-                    <p className="text-[0.9rem] text-gray-400 leading-relaxed">Mon &ndash; Fri: 07:00 &ndash; 18:00<br /><span className="text-[var(--lime)]">Emergency: 24/7</span></p>
-                  </div>
-                </div>
+                {contactDetails.map((detail, idx) => (
+                  <motion.div 
+                    key={idx}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.2 + idx * 0.1 }}
+                    className="flex items-start gap-4 group"
+                  >
+                    <div className="w-11 h-11 shrink-0 bg-[var(--navy)]/50 rounded-lg flex items-center justify-center text-[var(--lime)] border border-[var(--navy-light)] group-hover:bg-[var(--lime)] group-hover:text-[var(--navy)] transition-all duration-300">
+                      <detail.icon className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <strong className="block font-head text-lg text-white mb-1">{detail.title}</strong>
+                      <div className="text-[0.9rem] text-gray-400 leading-relaxed whitespace-pre-line group-hover:text-white transition-colors duration-300">
+                        {detail.content}
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </div>
 
-            <div className="mt-12 pt-8 border-t border-[var(--navy-light)] relative z-10">
-               <div className="w-full relative h-[180px] rounded-xl overflow-hidden bg-slate-800 flex items-center justify-center group">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="mt-12 pt-8 border-t border-[var(--navy-light)] relative z-10"
+            >
+               <div className="w-full relative h-[180px] rounded-xl overflow-hidden bg-slate-800 flex items-center justify-center group border border-white/5 shadow-2xl">
                  <iframe 
                    src="https://maps.google.com/maps?q=Plot%2064517,%20Unit%2022,%20Fairground%20Office%20Park,%20Gaborone,%20Botswana&t=&z=13&ie=UTF8&iwloc=&output=embed"
                    className="w-full h-full border-0 filter grayscale-[40%] opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none group-hover:pointer-events-auto"
@@ -195,8 +215,8 @@ export function Contact() {
                  />
                  <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_15px_rgba(0,0,0,0.5)]"></div>
                </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
         </div>
       </div>

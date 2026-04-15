@@ -1,10 +1,19 @@
+"use client";
+
 import { Globe, Truck, Clock, Map } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function Operations() {
   return (
-    <section id="operations" className="py-16 md:py-24 bg-[var(--white)] transition-colors duration-300">
+    <section id="operations" className="py-16 md:py-24 bg-[var(--white)] transition-colors duration-300 overflow-hidden">
       <div className="container mx-auto px-6">
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-2xl mx-auto mb-16"
+        >
           <span className="inline-block font-head text-[0.75rem] font-bold tracking-[0.15em] text-[var(--lime)] uppercase mb-3">
             WHERE WE OPERATE
           </span>
@@ -12,19 +21,23 @@ export function Operations() {
             Our <span className="text-[var(--lime)]">Operational Footprint</span>
           </h2>
           <p className="text-[1.05rem] text-[var(--grey-600)] leading-loose tracking-wide aerospace-text-body">
-            With strategic bases across South Africa, we can reach your site quickly and efficiently.
+            Headquartered in Gaborone, Petromas operates a robust regional network ensuring seamless petroleum supply across the SADC region.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-12 items-start">
-          <div className="bg-[#E2E8F0] rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(45,42,119,0.16)]">
-            <div className="h-[480px] w-full relative group">
-               <iframe 
-                 src="https://maps.google.com/maps?q=Plot%2064517,%20Unit%2022,%20Fairground%20Office%20Park,%20Gaborone,%20Botswana&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                 className="w-full h-full border-0 absolute inset-0 filter grayscale-[20%] sepia-[10%] opacity-90 transition-all duration-700 group-hover:grayscale-0 group-hover:opacity-100"
-                 allowFullScreen={false} 
-                 loading="lazy" 
-                 referrerPolicy="no-referrer-when-downgrade"
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="bg-[#E2E8F0] rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(45,42,119,0.16)]"
+          >
+            <div className="h-[480px] w-full relative group bg-[var(--navy-dark)]">
+               <img 
+                 src="/images/map_africa.png"
+                 alt="Petromas Operational Map of Africa highlighting Botswana Hub"
+                 className="w-full h-full object-contain filter brightness-110 transition-transform duration-700 group-hover:scale-105"
                />
                
                {/* Decorative Overlay for Theme integration */}
@@ -45,49 +58,37 @@ export function Operations() {
                 Partner Sites
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="flex flex-col gap-6 pt-4">
-            <div className="flex items-start gap-4 p-5 bg-[var(--grey-100)] rounded-lg border-l-4 border-[var(--lime)] transition-all duration-300 hover:translate-x-1.5 hover:shadow-md group">
-              <div className="w-11 h-11 shrink-0 bg-[var(--navy)] rounded-lg flex items-center justify-center text-[var(--lime)] group-hover:scale-110 transition-transform">
-                <Globe className="w-5 h-5" />
-              </div>
-              <div>
-                <strong className="block font-head text-[0.95rem] text-[var(--navy)] mb-1">8 Provinces</strong>
-                <p className="text-[0.85rem] text-[var(--grey-600)]">Active operations across South Africa</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4 p-5 bg-[var(--grey-100)] rounded-lg border-l-4 border-[var(--lime)] transition-all duration-300 hover:translate-x-1.5 hover:shadow-md group">
-              <div className="w-11 h-11 shrink-0 bg-[var(--navy)] rounded-lg flex items-center justify-center text-[var(--lime)] group-hover:scale-110 transition-transform">
-                <Truck className="w-5 h-5" />
-              </div>
-              <div>
-                <strong className="block font-head text-[0.95rem] text-[var(--navy)] mb-1">40+ Tanker Fleet</strong>
-                <p className="text-[0.85rem] text-[var(--grey-600)]">Modern, GPS-tracked delivery vehicles</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4 p-5 bg-[var(--grey-100)] rounded-lg border-l-4 border-[var(--lime)] transition-all duration-300 hover:translate-x-1.5 hover:shadow-md group">
-              <div className="w-11 h-11 shrink-0 bg-[var(--navy)] rounded-lg flex items-center justify-center text-[var(--lime)] group-hover:scale-110 transition-transform">
-                <Clock className="w-5 h-5" />
-              </div>
-              <div>
-                <strong className="block font-head text-[0.95rem] text-[var(--navy)] mb-1">4-Hour Response</strong>
-                <p className="text-[0.85rem] text-[var(--grey-600)]">Emergency delivery SLA in metro areas</p>
-              </div>
-            </div>
-
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex flex-col gap-6 pt-4"
+          >
             <div className="flex items-start gap-4 p-5 bg-[var(--grey-100)] rounded-lg border-l-4 border-[var(--lime)] transition-all duration-300 hover:translate-x-1.5 hover:shadow-md group">
               <div className="w-11 h-11 shrink-0 bg-[var(--navy)] rounded-lg flex items-center justify-center text-[var(--lime)] group-hover:scale-110 transition-transform">
                 <Map className="w-5 h-5" />
               </div>
               <div>
                 <strong className="block font-head text-[0.95rem] text-[var(--navy)] mb-1">SADC Coverage</strong>
-                <p className="text-[0.85rem] text-[var(--grey-600)]">Cross-border supply into neighbouring states</p>
+                <p className="text-[0.85rem] text-[var(--grey-600)]">Dedicated logistics and supply network across the SADC region.</p>
               </div>
             </div>
-          </div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="mt-4 p-5 bg-[var(--navy-dark)]/5 rounded-lg border border-[var(--navy)]/10"
+            >
+              <p className="text-[0.85rem] text-[var(--navy-dark)] leading-relaxed italic">
+                <strong>Corporate Note:</strong> Petromas also has a sister company registered in South Africa trading under the name <strong>Petromas Energy Pty Ltd</strong> with offices in Houghton, Johannesburg.
+              </p>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

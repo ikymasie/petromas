@@ -57,7 +57,8 @@ export function Footer() {
           <div>
             <h4 className="text-lg font-head font-bold text-white mb-6 uppercase tracking-wider">Contact</h4>
             <ul className="space-y-4">
-              <li><a href="tel:+26771600015" className="text-sm text-gray-400 hover:text-[var(--lime)] transition-colors">+267 71600015</a></li>
+              <li><a href="tel:+2673933612" className="text-sm text-gray-400 hover:text-[var(--lime)] transition-colors">Tel: +267 3933612</a></li>
+              <li><a href="tel:+26771600015" className="text-sm text-gray-400 hover:text-[var(--lime)] transition-colors">Mob: +267 71600015</a></li>
               <li><a href="mailto:admin@petromas.co.bw" className="text-sm text-gray-400 hover:text-[var(--lime)] transition-colors">admin@petromas.co.bw</a></li>
               <li><Link href="#contact" className="text-sm text-gray-400 hover:text-[var(--lime)] transition-colors">Send Enquiry</Link></li>
             </ul>

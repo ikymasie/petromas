@@ -1,4 +1,7 @@
+"use client";
+
 import { Pickaxe, Building2, Truck, Tractor, Landmark, Zap, Plane, Coffee } from "lucide-react";
+import { motion } from "framer-motion";
 
 const industries = [
   { name: "Mining & Extraction", icon: Pickaxe },
@@ -11,25 +14,60 @@ const industries = [
   { name: "Hospitality & Retail", icon: Coffee },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
+
 export function Industries() {
   return (
-    <section id="industries" className="py-16 md:py-24 bg-[var(--bg)] transition-colors duration-300">
+    <section id="industries" className="py-16 md:py-24 bg-[var(--bg)] transition-colors duration-300 overflow-hidden">
       <div className="container mx-auto px-6">
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-2xl mx-auto mb-16"
+        >
           <span className="inline-block font-head text-[0.75rem] font-bold tracking-[0.15em] text-[var(--lime)] uppercase mb-3">
             INDUSTRIES WE SERVE
           </span>
           <h2 className="font-head text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold text-[var(--navy)] leading-tight aerospace-text-glow">
             Trusted Across <span className="text-[var(--lime)]">Key Sectors</span>
           </h2>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-5"
+        >
           {industries.map((ind, index) => {
             const Icon = ind.icon;
             return (
-              <div 
+              <motion.div 
                 key={index}
+                variants={itemVariants}
                 className="flex flex-col items-center gap-3.5 px-5 py-8 bg-[var(--white)] rounded-2xl text-center shadow-[0_2px_8px_rgba(45,42,119,0.08)] border-2 border-transparent transition-all duration-300 hover:-translate-y-2 hover:border-[var(--lime)] hover:shadow-[0_20px_60px_rgba(45,42,119,0.16)] group card-bg outline-none"
                 tabIndex={0}
               >
@@ -39,10 +77,10 @@ export function Industries() {
                 <span className="font-head text-sm font-semibold text-[var(--charcoal)] tracking-wide group-hover:text-[var(--navy)] transition-colors">
                   {ind.name}
                 </span>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
